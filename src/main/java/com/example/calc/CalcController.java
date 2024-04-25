@@ -11,4 +11,14 @@ public class CalcController {
         return x + y;
     }
 
+    @GetMapping("/calc/{x}/{operator}/{y}")
+    public int calc(@PathVariable int x, @PathVariable String operator, @PathVariable int y) {
+        return switch (operator) {
+            case "+" -> x + y;
+            case "*" -> x * y;
+            case "-" -> x - y;
+            case "divide" -> x / y;
+            default -> 0;
+        };
+    }
 }
